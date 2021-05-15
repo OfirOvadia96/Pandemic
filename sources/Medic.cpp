@@ -3,12 +3,10 @@
 namespace pandemic{
 
     Player& Medic::treat(City city){
-         if(this->board.level_disese_in_the_city(city) == 0){
+         if(this->board[city] == 0){
             throw std::invalid_argument("A city free of disease!");
         }
-        else{
-            this->board[city] = 0;
-        }
+        this->board[city] = 0;
         return *this;
     }
 
@@ -49,8 +47,11 @@ namespace pandemic{
         /*check if there are reaserch stations in both cities and
           even if the city the player wants to fly to is not the current city he is already in
         */
-        if(city != this->current_city && this->board.exists_station(this->current_city)&&
-        this->board.exists_station(city)){
+        if(!this->board.exists_station(this->current_city) && !this->board.exists_station(city)){
+            throw std::invalid_argument("no stations in src/dst city");
+        }
+
+        if(city != this->current_city){
              this->current_city = city; //update the current city after fly
              if(this->board.exists_cure(this->board.get_color(city))){
                 this->board[city] = 0;//the medic expertise

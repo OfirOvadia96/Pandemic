@@ -3,7 +3,7 @@
 namespace pandemic{
 
     Player& Virologist::treat(City city){
-         if(this->board.level_disese_in_the_city(city) == 0){
+         if(this->board[city] == 0){
             throw std::invalid_argument("A city free of disease!");
         }
         

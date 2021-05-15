@@ -58,6 +58,6 @@ namespace pandemic{
 
         //remove all cards from player hand
         void remove_cards();
-
+        
     };
 }
