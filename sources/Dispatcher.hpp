@@ -7,7 +7,7 @@ namespace pandemic{
     private:
      
     public:
-        Dispatcher(Board board , City city):Player(board,city){
+        Dispatcher(Board& board , City city):Player(board,city){
             this->role_ = "Dispatcher";
         }
         ~Dispatcher(){}

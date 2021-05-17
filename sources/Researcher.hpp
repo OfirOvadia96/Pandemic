@@ -6,11 +6,11 @@ namespace pandemic{
     private:
         
     public:
-        Researcher(Board board , City city):Player(board,city){
+        Researcher(Board& board , City city):Player(board,city){
             this->role_ = "Researcher";
         }
         ~Researcher(){}
-        void discover_cure(Color color)override;
+        Player& discover_cure(Color color)override;
     };
     
 }

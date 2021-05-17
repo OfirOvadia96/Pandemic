@@ -6,7 +6,7 @@ namespace pandemic{
         
         public:
             /* constractor */
-            OperationsExpert(Board board , City city):Player(board,city){
+            OperationsExpert(Board& board , City city):Player(board,city){
             this->role_ = "OperationsExpert";
             }
 

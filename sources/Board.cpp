@@ -77,13 +77,12 @@ namespace pandemic{
       ,{City::Tehran,{City::Baghdad, City::Moscow, City::Karachi, City::Delhi}}
       ,{City::Tokyo,{City::Seoul, City::Shanghai, City::Osaka, City::SanFrancisco}}
       ,{City::Washington,{City::Atlanta, City::NewYork, City::Montreal, City::Miami}}};
+
+      cities_stations = {};
+      discovered_cures = {};
   }
 
   int& Board::operator[](City city){
-    return this->sick_cities.at(city);
-  }
-
-  int Board::operator[](City city)const{
     return this->sick_cities.at(city);
   }
 
@@ -93,12 +92,12 @@ namespace pandemic{
 
 
   /*reminder:
-  it-->first gives you the key (City)
-  it->second gives you the mapped element (int) */
+  pair.first gives you the key (City)
+  pair.second gives you the mapped element (int) */
   bool Board::is_clean(){
     bool ans = true;
-    for (std::map<City, int>::const_iterator it = sick_cities.begin(); it != sick_cities.end(); ++it){
-      if(it->second != 0){
+    for(const pair<City,int> pair:this->sick_cities){
+      if(pair.second != 0){
         ans = false;
         break;
       }

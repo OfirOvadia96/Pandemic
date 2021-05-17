@@ -6,7 +6,7 @@ namespace pandemic{
     private:
   
     public:
-        Medic(Board board , City city):Player(board,city){
+        Medic(Board& board , City city):Player(board,city){
             this->role_ = "Medic";
         }
         ~Medic(){

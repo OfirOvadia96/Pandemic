@@ -2,7 +2,7 @@
 
 namespace pandemic{
 
-     void Researcher::discover_cure(Color color){
+     Player& Researcher::discover_cure(Color color){
         bool ans_cures = this->board.exists_cure(color);
         if(!ans_cures && this->cards.at(color).size() > 4){
             const int  more_then = 6;
@@ -12,5 +12,6 @@ namespace pandemic{
             }
             this->board.new_cure_discovered(color);//update that the cure discovered
         }
+        return *this;
      }
 }

@@ -23,9 +23,7 @@ namespace pandemic{
         /* destractor */
         ~Board(){}
 
-        int& operator[](City city); // for change
-
-        int operator[](City city)const; //for read
+        int& operator[](City city);
 
 
         friend std::ostream& operator<<(std::ostream& os ,const Board& board);

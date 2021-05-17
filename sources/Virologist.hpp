@@ -5,7 +5,7 @@ namespace pandemic{
     private:
  
     public:
-        Virologist(Board board , City city):Player(board,city){
+        Virologist(Board& board , City city):Player(board,city){
             this->role_ = "Virologist";
         }
         ~Virologist(){}

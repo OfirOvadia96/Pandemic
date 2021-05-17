@@ -45,7 +45,7 @@ namespace pandemic{
         virtual void build();
 
         //Discovering a cure for a disease of a certain color
-        virtual void discover_cure(Color color);
+        virtual Player& discover_cure(Color color);
 
         //Treatment of the disease
         virtual Player& treat(City city); 

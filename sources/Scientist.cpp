@@ -2,7 +2,7 @@
 
 namespace pandemic{
 
-    void Scientist::discover_cure(Color color){
+    Player& Scientist::discover_cure(Color color){
         bool ans_cures = this->board.exists_cure(color);
         bool ans_station = this->board.exists_station(this->current_city);
         
@@ -14,5 +14,6 @@ namespace pandemic{
 
             this->board.new_cure_discovered(color);//update theat the cure discovered
         }
+        return *this;
     }
 }

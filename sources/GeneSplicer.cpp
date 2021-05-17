@@ -2,7 +2,7 @@
 
 namespace pandemic{
 
-    void GeneSplicer::discover_cure(Color color){
+    Player& GeneSplicer::discover_cure(Color color){
         bool ans_cures = this->board.exists_cure(color);
         bool ans_station = this->board.exists_station(this->current_city);
         int amount_of_cards = 0;
@@ -21,5 +21,6 @@ namespace pandemic{
 
             this->board.new_cure_discovered(color);//update that the cure discovered
         }
+        return *this;
     }
 }
