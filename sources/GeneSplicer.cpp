@@ -12,10 +12,13 @@ namespace pandemic{
         }
 
         if(count < 5){
-            //throw invalid_argument("The Player doesn't have enough cards!");
+            throw invalid_argument("The Player doesn't have enough cards!");
+        }
+        if(!ans_station){
+            throw invalid_argument("no reaserch station");
         }
         
-        if(!ans_cures && ans_station){
+        if(!ans_cures){
            std::unordered_set<City> temp_cards;
             
             //copy the cards

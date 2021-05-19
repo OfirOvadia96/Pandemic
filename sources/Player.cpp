@@ -81,12 +81,13 @@ namespace pandemic{
 
     Player& Player::discover_cure(Color color){
         int  count = 0;
+        //counting how many cards the player had
         for(City c : this->cards){
             if(this->board.get_color(c) == color){
                 count++;
             }
         }
-
+        
         if(count < 5){
             throw invalid_argument{"Player don't have enough cards!"};
         }

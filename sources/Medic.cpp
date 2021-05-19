@@ -18,9 +18,10 @@ namespace pandemic{
         if(!this->board.is_neighbors(this->current_city,city)){
            throw std::invalid_argument("the cities not neighbors");
         }
+        
          this->current_city = city; //drive there and update current city
            
-           if(this->board.exists_cure(this->board.get_color(city))&& city != this->current_city){ 
+           if(this->board.exists_cure(this->board.get_color(city))){ 
                 this->board[city] = 0; //the medic expertise
             }
             

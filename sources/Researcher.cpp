@@ -13,7 +13,7 @@ namespace pandemic{
         }
 
         if(count < 5){
-          // throw invalid_argument{"The Player doesn't have enough cards!"};
+           throw invalid_argument{"The Researcher doesn't have enough cards!"};
         }
         
         if(!ans_cures){
