@@ -13,7 +13,7 @@ namespace pandemic{
         Board& board;
 
         //return random color - black , red , yellow , blue
-        Color random_color();
+        static Color random_color();
 
         //check if the player had this specific card
         bool holds_card(City city);

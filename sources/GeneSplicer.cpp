@@ -6,10 +6,7 @@ namespace pandemic{
          bool ans_cures = this->board.exists_cure(color);
         bool ans_station = this->board.exists_station(this->current_city);
         
-        int  count = 0;
-        for(City c : this->cards){
-                count++;
-        }
+        int  count = this->cards.size();
         const int more_then = 5;
         if(count < more_then){
             throw invalid_argument("The Player doesn't have enough cards!");

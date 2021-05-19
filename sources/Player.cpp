@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include <array>
 using namespace std;
 namespace pandemic{
 
@@ -161,12 +162,5 @@ namespace pandemic{
 
     void Player::remove_cards(){
         this->cards.clear();
-    }
-
-    Color Player::random_color(){
-        const int array_size = 4;
-        Color list_color[array_size]= {Color::Black, Color::Yellow,Color::Blue,Color::Red};
-        Color ran = list_color[rand() % array_size];
-        return ran;
     }
 }
