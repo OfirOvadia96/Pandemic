@@ -9,8 +9,11 @@ namespace pandemic{
         protected:
         std::string role_;
         City current_city; // where the player is 
-        std::map<Color,std::unordered_set<City>> cards;  // cities cards on player hands
+        std::unordered_set<City> cards;  // cities cards on player hands
         Board& board;
+
+        //return random color - black , red , yellow , blue
+        Color random_color();
 
         //check if the player had this specific card
         bool holds_card(City city);
@@ -19,7 +22,7 @@ namespace pandemic{
         
         /* constractor */
         Player(Board& b, City city):board(b), current_city(city){
-
+          this->cards = {};
         }
 
         /* destractor */

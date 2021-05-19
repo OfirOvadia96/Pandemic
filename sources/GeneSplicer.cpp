@@ -1,24 +1,44 @@
 #include "GeneSplicer.hpp"
-
+using namespace std;
 namespace pandemic{
 
     Player& GeneSplicer::discover_cure(Color color){
-        bool ans_cures = this->board.exists_cure(color);
+         bool ans_cures = this->board.exists_cure(color);
         bool ans_station = this->board.exists_station(this->current_city);
-        int amount_of_cards = 0;
-        //check how many cards the player holds
-        for(const auto pair :this->cards){
-            amount_of_cards += pair.second.size();
+        
+        int  count = 0;
+        for(City c : this->cards){
+                count++;
         }
 
-        if(!ans_cures && ans_station && amount_of_cards > 4){
-            const int  more_then = 6;
-            for(int i=0; i<more_then; i++){
-                //need fix !!!!!!!!!!!!!!!!!! how we choose what cards to remove from player hand!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                std::unordered_set<City>::iterator it = this->cards.at(color).begin();
-                this->cards.at(color).erase(it); //throw card from hand player
+        if(count < 5){
+            //throw invalid_argument("The Player doesn't have enough cards!");
+        }
+        
+        if(!ans_cures && ans_station){
+           std::unordered_set<City> temp_cards;
+            
+            //copy the cards
+            for(City card:this->cards){
+                temp_cards.insert(card);
             }
-
+           
+            int counter = 0;
+            //erase 5 cards of the same color from the player hand
+            for(City card : this->cards){
+                temp_cards.erase(card);
+                if(counter == 4){
+                    break;
+                }
+                counter++;
+            }
+            //clear the cards from player hand
+            this->cards.clear();
+           
+            //adds back the remaining cards
+            for(City card : temp_cards){
+                this->cards.insert(card);
+            }
             this->board.new_cure_discovered(color);//update that the cure discovered
         }
         return *this;

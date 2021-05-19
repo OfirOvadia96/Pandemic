@@ -18,7 +18,7 @@ namespace pandemic{
         else{ //if cure not exists
             this->board[city] = (this->board[city]-1);
         }
-        this->cards.at(this->board.get_color(city)).erase(city);
+        this->cards.erase(city);
         return *this;
     }
 }
