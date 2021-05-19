@@ -11,8 +11,8 @@ namespace pandemic{
                 count++;
             }
         }
-
-        if(count < 5){
+        const int more_then = 5;
+        if(count < more_then){
            throw invalid_argument{"The Researcher doesn't have enough cards!"};
         }
         

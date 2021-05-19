@@ -7,7 +7,7 @@ namespace pandemic{
             throw std::invalid_argument("A city free of disease!");
         }
 
-        if(!holds_card(city)){
+        if(!holds_card(city)&& city != this->current_city){
             throw std::invalid_argument("no card");
         }
 

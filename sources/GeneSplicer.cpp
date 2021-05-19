@@ -10,8 +10,8 @@ namespace pandemic{
         for(City c : this->cards){
                 count++;
         }
-
-        if(count < 5){
+        const int more_then = 5;
+        if(count < more_then){
             throw invalid_argument("The Player doesn't have enough cards!");
         }
         if(!ans_station){

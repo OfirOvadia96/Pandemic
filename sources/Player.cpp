@@ -27,13 +27,12 @@ namespace pandemic{
     }
 
     Player& Player::fly_direct(City city){
-         if(this->current_city == city){
+         if(this->current_city == city|| !holds_card(city)){
             throw invalid_argument{"can't fly from city to itself"};
         }
-        if(holds_card(city)){
+
             this->cards.erase(city); //remove this card from player hand
             this->current_city = city; //update the current city after fly
-        }
         return *this;
     }
     
@@ -87,8 +86,8 @@ namespace pandemic{
                 count++;
             }
         }
-        
-        if(count < 5){
+        const int more_then = 5;
+        if(count < more_then){
             throw invalid_argument{"Player don't have enough cards!"};
         }
         
@@ -131,6 +130,10 @@ namespace pandemic{
     }
 
     Player& Player::treat(City city){
+        if(city != this->current_city){
+            throw invalid_argument("not in the current city");
+        }
+
         if(this->board[this->current_city] == 0){
             throw invalid_argument("A city free of disease!");
         }
