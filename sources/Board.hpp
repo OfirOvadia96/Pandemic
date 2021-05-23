@@ -14,9 +14,9 @@ namespace pandemic{
         std::map<City,std::unordered_set<City>> cities_and_neighbors; //<City,set - contains the neighbors>
         std::unordered_set<City> cities_stations; // set - that contains all the cities that has a reaserch station
         std::unordered_set<Color> discovered_cures; //What a cure was discovered - red,yellow,black,blue
-
+        std::map<City,std::string> city_for_string; //for ostream
+        std::map<Color,std::string> color_for_string;//for ostream
         public:
-
          /* constractor */
         Board();
 

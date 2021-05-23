@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include <string.h>
 using namespace std;
 namespace pandemic{
 
@@ -15,6 +16,18 @@ namespace pandemic{
       {City::Paris,0},{City::Riyadh,0},{City::SanFrancisco,0},{City::Santiago,0},{City::SaoPaulo,0},
       {City::Seoul,0},{City::Shanghai,0},{City::StPetersburg,0},{City::Sydney,0},{City::Taipei,0},
       {City::Tehran,0},{City::Tokyo,0},{City::Washington,0}};
+    
+    city_for_string = {{City::Algiers,"Algiers"},{City::Atlanta,"Atlanta"},{City::Baghdad,"Baghdad"},
+      {City::Bangkok,"Baghdad"},{City::Beijing,"Beijing"},{City::Bogota,"Bogota"},{City::BuenosAires,"BuenosAires"},
+      {City::Cairo,"Cairo"},{City::Chennai,"Chennai"},{City::Chicago,"Chicago"},{City::Delhi,"Delhi"},{City::Essen,"Essen"},
+      {City::HoChiMinhCity,"HoChiMinhCity"},{City::HongKong,"HongKong"},{City::Istanbul,"Istanbul"},{City::Jakarta,"Jakarta"},
+      {City::Johannesburg,"Johannesburg"},{City::Karachi,"Karachi"},{City::Khartoum,"Khartoum"},{City::Kinshasa,"Kinshasa"},
+      {City::Kolkata,"Kolkata"},{City:: Lagos,"Lagos"},{City::Lima,"Lima"},{City:: London,"London"},{City::LosAngeles,"LosAngeles"},
+      {City::Madrid,"Madrid"},{City::Manila,"Manila"},{City::MexicoCity,"MexicoCity"},{City:: Miami,"Miami"},{City::Milan,"Milan"},
+      {City::Montreal,"Montreal"},{City::Moscow,"Moscow"},{City::Mumbai,"Mumbai"},{City::NewYork,"NewYork"},{City::Osaka,"Osaka"},
+      {City::Paris,"Paris"},{City::Riyadh,"Riyadh"},{City::SanFrancisco,"SanFrancisco"},{City::Santiago,"Santiago"},
+      {City::SaoPaulo,"SaoPaulo"},{City::Seoul,"Seoul"},{City::Shanghai,"Shanghai"},{City::StPetersburg,"StPetersburg"},
+      {City::Sydney,"Sydney"},{City::Taipei,"Taipei"},{City::Tehran,"Tehran"},{City::Tokyo,"Tokyo"},{City::Washington,"Washington"}};
     
     cities_color = {{City::Algiers,Color::Black},{City::Atlanta,Color::Blue},{City::Baghdad,Color::Black},{City::Bangkok,Color::Red},
       {City::Beijing,Color::Red},{City::Bogota,Color::Yellow},{City::BuenosAires,Color::Yellow},{City::Cairo,Color::Black},
@@ -77,9 +90,11 @@ namespace pandemic{
       ,{City::Tehran,{City::Baghdad, City::Moscow, City::Karachi, City::Delhi}}
       ,{City::Tokyo,{City::Seoul, City::Shanghai, City::Osaka, City::SanFrancisco}}
       ,{City::Washington,{City::Atlanta, City::NewYork, City::Montreal, City::Miami}}};
-
-      cities_stations = {};
-      discovered_cures = {};
+    
+    color_for_string = {{Color::Blue,"Blue"}, {Color::Red,"Red"}, {Color::Black,"Black"}, {Color::Yellow,"Yellow"}};
+    
+    cities_stations = {};
+    discovered_cures = {};
   }
 
   int& Board::operator[](City city){
@@ -87,7 +102,25 @@ namespace pandemic{
   }
 
   std::ostream& operator<<(std::ostream& os ,const Board& board){    
-    return (os << " stam" << std::endl);//////////////////////////****************////////////////// need to fix//////////////
+    //headline
+    os << " Current Board: " << endl;
+
+    //sick cities
+    for(const pair<City,int> c:board.sick_cities){
+      os << "City: " << board.city_for_string.at(c.first) << "level disease: " << c.second << endl;
+    }
+    
+    //cures
+    for(const Color c: board.discovered_cures){
+      os << "A cure that was discovered: " << board.color_for_string.at(c) << endl;
+    }
+
+    //research stations
+    for(const City c : board.cities_stations){
+      os << "There is a research station in: " << board.city_for_string.at(c) << endl;
+    }
+
+    return os;
   }
 
 
@@ -161,5 +194,4 @@ namespace pandemic{
       }
       return ans;
    }
-
 }
