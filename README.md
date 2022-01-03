@@ -1,6 +1,6 @@
 <div dir="rtl" lang="he">
 
-# פאנדמיק - שלב ב
+# פאנדמיק
 
 "כדי להתאמן בהתמודדות עם מגפות עולמיות, אנחנו צריכים משחקים"
 [(ביל גייטס, 2015)](https://www.ted.com/talks/bill_gates_the_next_outbreak_we_re_not_ready#t-389693).
